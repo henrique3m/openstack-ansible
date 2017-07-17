@@ -1,0 +1,34 @@
+---
+- name: install shade and dependencies 
+  hosts: localhost
+  tasks:
+  - name: package build
+    apt:
+     name: build-essential
+     state: present
+
+  - name: package libssl
+    apt:
+     name: libssl-dev
+     state: present
+
+  - name: package libffi
+    apt:
+     name: libffi-dev
+     state: present
+
+  - name: package python
+    apt:
+     name: python-dev
+     state: present
+
+  - name: Download pip
+    get_url: url=https://bootstrap.pypa.io/get-pip.py dest=.
+
+  - name: Execute 
+    command: python get-pip.py
+
+  - name: install
+    command: pip install shade
+
+

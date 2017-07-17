@@ -1,0 +1,46 @@
+---
+- name: install openstack
+  hosts: localhost
+  vars_files:
+  - configure.yml
+  tasks:
+
+  - name: update aptitude cache
+    raw: apt-get update
+
+  - name: install python-apt for ansible
+    raw: apt-get install python-apt
+
+  - name: ensure a sudo group exists
+    group: name=sudo state=present
+
+  - name: ensure users in the sudo group
+    lineinfile: "dest=/etc/sudoers state=present
+                 regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'
+                 validate='visudo -cf %s'"
+
+  - name: create the user account
+    user: name={{ username }} state=present
+          append=true groups=sudo
+
+  - name: install devstack
+  hosts: localhost
+  vars_files:
+  - configure.yml
+  tasks:
+
+  - name: clone devstack
+    git: repo=https://github.com/openstack-dev/devstack.git
+         dest=~/devstack
+         
+  - name: devstack local.conf
+    template: src=templates/local.conf.temp
+              dest=~/devstack/local.conf
+
+  - name: unstack it
+    command: chdir=~/devstack ./unstack.sh
+    ignore_errors: yes
+
+  - name: stack it
+    command: chdir=~/devstack ./stack.sh
+    ignore_errors: yes

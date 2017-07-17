@@ -1,8 +1,6 @@
 ---
 - name: install openstack
   hosts: localhost
-  vars_files:
-  - configure.yml
   tasks:
 
   - name: update aptitude cache
@@ -25,8 +23,6 @@
 
   - name: install devstack
   hosts: localhost
-  vars_files:
-  - configure.yml
   tasks:
 
   - name: clone devstack

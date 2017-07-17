@@ -1,19 +1,22 @@
-Ansible scripts to install Openstack, setup instance with Web Server/Database and deploy application
+# Ansible and Openstack
 
-Edite as configurações no arquivo configure.yml
+Ansible scripts to install Openstack, setup instance with Web Server/Database and deploy application.
 
-Arquivos:
--install.yml
--setup.yml
--deploy.yml
--test.yml
--configure.yml
--templates/
----local.conf.temp
+**Edite as configurações no arquivo configure.yml
 
+## Playbooks
+
+* install.yml
+* setup.yml
+* deploy.yml
+* test.yml
+* configure.yml
 			
-Execute os playbooks:
-$ansible-playbook install.yml
-$ansible-playbook setup.yml
-$ansible-playbook deploy.yml
-$ansible-playbook test.yml
+## Execução
+
+```bash
+$ ansible-playbook install.yml
+$ ansible-playbook setup.yml
+$ ansible-playbook deploy.yml
+$ ansible-playbook test.yml
+```

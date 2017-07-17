@@ -1,0 +1,4 @@
+---
+password: PASSWORD
+ip: IP
+image_url: ../images/xenial-server-cloudimg-amd64-disk1.img

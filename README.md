@@ -1,6 +1,6 @@
 # Ansible and Openstack
 
-Ansible scripts to install Openstack, setup instance with Web Server/Database and deploy application.
+Ansible scripts to install Openstack.
 
 ## Playbooks
 
@@ -8,15 +8,6 @@ Ansible scripts to install Openstack, setup instance with Web Server/Database an
 * install.yml
 			
 ## Execução
-
-```bash
-$sudo apt-get install ansible
-
-$git clone https://github.com/henrique3m/openstack-ansible.git
-
-$cd openstack-ansible
-```
-
 Edite as configurações de senha nos arquivos openrc.sh e /templates/local.conf.temp
 
 ```bash

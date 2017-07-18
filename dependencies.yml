@@ -1,6 +1,7 @@
 ---
 - name: install shade and dependencies 
   hosts: localhost
+  sudo: True
   tasks:
   - name: package build
     apt:

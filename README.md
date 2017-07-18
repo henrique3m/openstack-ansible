@@ -13,7 +13,7 @@ Edite as configurações de senha nos arquivos openrc.sh e /templates/local.conf
 ```bash
 $ . openrc.sh
 
-$sudo ansible-playbook dependencies.yml 
+$ansible-playbook dependencies.yml 
 
 $ansible-playbook install.yml
 ```

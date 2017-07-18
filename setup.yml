@@ -17,7 +17,14 @@
   - name: key
     command: openstack keypair create sshKey
 
-  - name: launch instance
-    command: openstack server create --flavor 2 --image linux-image --security-group default --key-name sshKey linux-instance
-
+  - name: launch an instance
+    os_server:
+        state: present
+        name: linux-instance
+        image: linux-image
+        key_name: sshKey
+        timeout: 200
+        flavor: m1.small
+        auto_floating_ip: yes
+        security_groups: default
 

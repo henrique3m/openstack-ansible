@@ -1,12 +1,25 @@
+---
 - name: launch a compute instance
   hosts: localhost
   tasks:
-    - name: launch an instance
-      os_server:
+  - name: launch an instance default image
+    os_server:
         state: present
-        name: vmteste
+        name: vm1
         image: cirros-0.3.5-x86_64-disk
         key_name: sshKey
         timeout: 200
         flavor: m1.tiny
         auto_floating_ip: yes
+
+  - name: launch an instance custom image
+    os_server:
+        state: present
+        name: vm2
+        image: linux-image
+        key_name: sshKey
+        timeout: 200
+        flavor: m1.small
+        auto_floating_ip: yes
+        security_groups: default
+

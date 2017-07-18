@@ -1,0 +1,23 @@
+---
+- name: setup openstack instance
+  hosts: localhost
+  user: stack
+  sudo: True
+  tasks:
+
+  - name: download linux image
+    get_url: url=http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img dest=./image.img
+
+- name:
+  hosts: localhost
+  tasks:
+  - name: create image
+    command: openstack image create --disk-format qcow2 --container-format bare --public --file image.img linux-image
+
+  - name: key
+    command: openstack keypair create sshKey
+
+  - name: launch instance
+    command: openstack server create --flavor 2 --image linux-image --security-group default --key-name sshKey linux-instance
+
+

@@ -15,8 +15,20 @@ Ansible scripts to install Openstack, setup instance with Web Server/Database an
 ## Execução
 
 ```bash
-$ ansible-playbook install.yml
-$ ansible-playbook setup.yml
-$ ansible-playbook deploy.yml
-$ ansible-playbook test.yml
+$sudo apt-get install ansible
+
+$git clone https://github.com/henrique3m/openstack-ansible.git
+
+$cd openstack-ansible
 ```
+
+# Edite as configurações de senha nos arquivos openrc.sh e /templates/local.conf.temp
+
+```bash
+$ . openrc.sh
+
+$sudo ansible-playbook dependencies.yml 
+
+$ansible-playbook install.yml
+```
+

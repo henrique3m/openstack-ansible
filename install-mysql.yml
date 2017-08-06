@@ -1,0 +1,22 @@
+- name: Install MySQL packages
+  hosts: localhost
+  user: stack
+    apt: pkg={{item}} state=installed
+    with_items:
+      - bundler
+      - mysql-server-core-5.5
+      - mysql-client-core-5.5
+      - libmysqlclient-dev
+      - python-mysqldb
+      - mysql-server
+      - mysql-client
+      - build-essential
+
+
+- name: Copy scrpt database
+      copy: src=deploy/installbd.sql dest=/tmp/deploy.sql
+- name: Create database
+      shell: cat /tmp/dump.sql
+
+- name: Restart the MySQL service
+    action: service name=mysql state=restarted enabled=true
